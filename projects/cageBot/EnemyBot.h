@@ -22,7 +22,7 @@ private:
 	kf::Vector2 m_pos;
 	
 	//Tweakables
-	float m_distScalar = 0.075f; //Mulitiplied by distance to adjust shot location.
+	float m_distScalar = 0.12f; //Mulitiplied by distance to adjust shot location.
 	float m_tickScalar = 0.0f; //Multiplied by ticks to adjust shot location.
 };
 

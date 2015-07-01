@@ -10,6 +10,11 @@ kf::Vector2 EnemyBot::getPos()
 	return m_pos;
 }
 
+void EnemyBot::update()
+{
+	m_invisible++;
+}
+
 void EnemyBot::setPos(kf::Vector2 pos)
 {
 	m_pos = pos;

@@ -17,6 +17,7 @@
   <ItemGroup>
     <ClInclude Include="bot.h" />
     <ClInclude Include="EnemyBot.h" />
+    <ClInclude Include="node.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{93F97D4D-6A9D-4A6F-80AE-C3E7E6344BA0}</ProjectGuid>
