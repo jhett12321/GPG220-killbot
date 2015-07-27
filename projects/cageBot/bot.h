@@ -85,11 +85,11 @@ private:
 	const int m_fleeAttackTick = 4; //When fleeing, every x ticks, do an attack.
 
 	//Attacking
-	const int m_attackScanTick = 7; //When attacking, every x ticks, perform a scan.
-	const int m_attackLastScanTick = 4; //When attacking, event x ticks, scan the enemies last know location.
+	const int m_attackScanTick = 5; //When attacking, every x ticks, perform a scan.
+	const int m_attackLastScanTick = 2; //When attacking, event x ticks, scan the enemies last know location.
 	const int m_enemyLostTickLimit = 30; //When attacking, if an enemies location is unknown for x ticks, revert to the search state.
 	const int m_attackSwitchTick = 18; //When moving away from target, at x ticks try and change target again to increase distance.
-	const float m_attackSwitchDist = 3.0f; //When attacking, distance until the bot moves away from target.
+	const float m_attackSwitchDist = 5.0f; //When attacking, distance until the bot moves away from target.
 #pragma endregion
 
 #pragma region Pathfinding & Navigation

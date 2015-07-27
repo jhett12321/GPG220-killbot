@@ -29,7 +29,7 @@ void Robot::init(const BotInitialData &initialData, BotAttributes &attrib)
 	//Reset our look angle.
 	m_lookAngle = 0.0f;
 
-	//Bot Attributes. Determined based on which level has been loaded.
+	//Bot Attributes
 	attrib.health = 10.0;
 	attrib.motor = 1.0;
 	attrib.weaponSpeed = 1.0;
@@ -44,6 +44,12 @@ void Robot::init(const BotInitialData &initialData, BotAttributes &attrib)
 			m_mapNodes.push_back(new Node(j, i, isWall));
 		}
 	}
+
+	//Set our bot state to SEARCHING
+	m_botState = SEARCHING;
+
+	//Reset our damage taken
+	m_damageTaken = 0;
 }
 
 void Robot::result(bool won)
@@ -204,7 +210,7 @@ void Robot::botLogic(const BotInput &input, BotOutput &output)
 
 			Line attackPos;
 			attackPos.start = input.position;
-			attackPos.end = output.lookDirection;
+			attackPos.end = m_enemyBot->getExpectedPosition(m_tickCount % m_attackScanTick, targetDist);
 			attackPos.r = 1;
 			attackPos.g = 0;
 			attackPos.b = 0;
@@ -334,8 +340,6 @@ int Robot::calculateAdjacentCost(Node* node)
 	{
 		for (int j = -1; j < 2; ++j)
 		{
-			//TODO Include or not include diagonal adjacents.
-
 			int moveCost = (std::abs(i) + std::abs(j)) * 2;
 
 			if (moveCost == 20) moveCost = 14;
@@ -493,7 +497,7 @@ void Robot::calculateGoal(const BotInput &input, BotOutput &output)
 		pathLine.end = kf::Vector2(path[i + 1]->getX() + 0.5, path[i + 1]->getY() + 0.5);;
 		pathLine.r = 0;
 		pathLine.g = 1;
-		pathLine.b = 0;
+		pathLine.b = 1;
 
 		output.lines.push_back(pathLine);
 	}
